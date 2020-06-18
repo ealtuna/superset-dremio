@@ -17,6 +17,9 @@ In order to discover the external address for the service:
 If the instance of Dremio to connect is inside a VPN, you need to create a local bind to the external service:
 
     ssh -i $(minikube ssh-key) docker@$(minikube ip) -R 31010:10.9.100.85:31010 -R 9047:10.9.100.85:9047
+    
+    
+    # within the minikube VM
     minikubeNode=$(ip route get 1 | sed -n 's/^.*src \([0-9.]*\) .*$/\1/p')
     curl http://${minikubeNode}:9047/
     echo $minikubeNode
