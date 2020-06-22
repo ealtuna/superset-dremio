@@ -1,4 +1,4 @@
-FROM preset/superset
+FROM preset/superset:0.36.0
 USER root
 RUN apt-get update -y && apt-get install -y alien
 RUN wget https://download.dremio.com/odbc-driver/1.4.2.1003/dremio-odbc-1.4.2.1003-1.x86_64.rpm -P /tmp/
