@@ -6,11 +6,19 @@ Using the Superset project official Helm chart and changing the used image for t
 
 ## Connect to Superset service
 
-In order to discover the external address for the service:
+If the service is already exposed with a nodePort. In order to discover the external address for the service:
 
     export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services superset)
     export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
     echo http://$NODE_IP:$NODE_PORT
+    
+If is not exposed:
+
+    kubectl expose deployment superset --type=LoadBalancer --name=superset-ext
+    
+wait some minutes until the service is ready:
+
+    minikube service superset-ext
 
 ## Using a Dremio datasource with a VPN
 
