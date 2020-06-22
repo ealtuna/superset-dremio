@@ -5,3 +5,7 @@ This repository mantains an image to run Apache Superset with the Dremio connect
 Published in DockerHub as:
 
 ealtuna/superset-dremio
+
+Connection string for Dremio:
+
+dremio://username:password@hostname:31010/dremio
